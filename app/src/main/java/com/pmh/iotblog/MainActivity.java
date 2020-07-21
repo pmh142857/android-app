@@ -20,7 +20,20 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+
+                SharedPreferences userPerf = getApplicationContext()
+                        .getSharedPreferences("user",Context.MODE_PRIVATE);
                 isFirstTime();
+                boolean isLoggedIn = userPerf.getBoolean("isLoggedIn", false);
+
+                if(isLoggedIn){
+                    startActivity(new Intent(MainActivity.this,HomeActivity.class));
+                    finish();
+                }
+                else{
+                    isFirstTime();
+                }
+
             }
         }, 1500);
     }

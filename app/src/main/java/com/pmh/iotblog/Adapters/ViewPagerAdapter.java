@@ -29,9 +29,9 @@ public class ViewPagerAdapter extends PagerAdapter {
     };
 
     private String titles[] ={
-      "Buoc1",
-      "Buoc2",
-      "Buoc3"
+      "Step 1",
+      "Step 2",
+      "Step 3"
     };
 
     private String descs[] ={

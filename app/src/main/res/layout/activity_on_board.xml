@@ -20,6 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Skip"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/leckerlione_regular"
             android:background="@android:color/transparent"
             android:id="@+id/btnLeft"/>
 
@@ -36,6 +39,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Next"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/leckerlione_regular"
             android:layout_alignParentRight="true"
             android:background="@android:color/transparent"
             android:id="@+id/btnRight"/>
