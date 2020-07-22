@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -70,7 +74,9 @@ public class HomeFragment extends Fragment {
         refreshLayout = view.findViewById(R.id.swipeHome);
         toolbar = view.findViewById(R.id.toolbarHome);
         ((HomeActivity) getContext()).setSupportActionBar(toolbar);
-        
+        //Them tuy chon menu
+        setHasOptionsMenu(true);
+
         getPosts();
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -117,7 +123,6 @@ public class HomeFragment extends Fragment {
                         arrayList.add(post);
 
                     }
-
                     // Do du lieu ra
                     postsAdapter = new PostsAdapter(getContext(),arrayList);
                     recyclerView.setAdapter(postsAdapter);
@@ -149,9 +154,32 @@ public class HomeFragment extends Fragment {
         queue.add(request);
     }
 
+    //Search
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search,menu);
+        MenuItem item = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) item.getActionView();
+
+        //Thiet lap su kien trong SearchView
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // nhan su kien gui ..
+                return false;
+            }
+
+            @Override
+            // Show ra phan tim kiem
+            public boolean onQueryTextChange(String newText) {
+                postsAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
 
 
-
-
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 }

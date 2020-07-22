@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.pmh.iotblog.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -24,10 +26,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
 
     private Context context;
     private ArrayList<Post> list;
+    private ArrayList<Post> ListAll;
 
     public PostsAdapter(Context context, ArrayList<Post> list) {
         this.context = context;
-        this.list = list;
+        this.list    = list;
+        this.ListAll = new ArrayList<>(list);
     }
 
     @NonNull
@@ -52,6 +56,43 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    // Loc tim kiem
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            // kiem tra nhap tim kiem
+            ArrayList<Post> filteredList = new ArrayList<>();
+            if( constraint.toString().isEmpty()) {
+                filteredList.addAll(ListAll);
+            } else {
+                for(Post post: ListAll ){
+                    if (post.getDesc().toLowerCase().contains(constraint.toString().toLowerCase())
+                        || post.getUser().getUserName().toLowerCase().contains(constraint.toString().toLowerCase())){
+                            filteredList.add(post);
+                    }
+                }
+                FilterResults results = new FilterResults();
+                results.values        = filteredList;
+                return  results;
+            }
+            FilterResults results = new FilterResults();
+            results.values        = filteredList;
+            return  results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            list.clear();
+            list.addAll((Collection<? extends Post>) results.values);
+            notifyDataSetChanged();
+
+        }
+    };
+
+    public Filter getFilter() {
+        return filter;
     }
 
     class PostsHolder extends RecyclerView.ViewHolder{
