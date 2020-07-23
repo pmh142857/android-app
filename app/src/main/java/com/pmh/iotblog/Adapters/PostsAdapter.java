@@ -24,6 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.pmh.iotblog.CommentActivity;
 import com.pmh.iotblog.Constant;
 import com.pmh.iotblog.EditPostActivity;
 import com.pmh.iotblog.HomeActivity;
@@ -52,7 +53,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
         this.context = context;
         this.list    = list;
         this.listAll = new ArrayList<>(list);
-        preferences  = context.getApplicationContext().getSharedPreferences("user",Context.MODE_PRIVATE);
+        preferences  = context.getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
 
     }
 
@@ -63,10 +64,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
         return new PostsHolder(view);
     }
 
-    // Cap nhat noi dung , thiet lap cac truong rieng
+    // Cap nhat noi dung ,thiet lap cac truong rieng
     @Override
     public void onBindViewHolder(@NonNull PostsHolder holder, int position) {
         Post post = list.get(position);
+        // load anh su dung picasso
         Picasso.get().load(Constant.URL+"storage/profiles/"+post.getUser().getPhoto()).into(holder.imgProfile);
         Picasso.get().load(Constant.URL+"storage/posts/"+post.getPhoto()).into(holder.imgPost);
         holder.txtName.setText(post.getUser().getUserName());
@@ -75,7 +77,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
         holder.txtDate.setText(post.getDate());
         holder.txtDesc.setText("@ " +post.getDesc());
 
-        // Set Like icon post
+        // Set Like click icon
         holder.btnLike.setImageResource(
             post.isSelfLike() ? R.drawable.ic_favorite_red : R.drawable.ic_favorite_outline
         );
@@ -138,13 +140,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
 
         });
 
-
         //Kiem tra nguoi dung va chi hien thi tren bai post cua nguoi dung menu popup
         if(post.getUser().getId() == preferences.getInt("id",0)){
            holder.btnPostOption.setVisibility(View.VISIBLE );
         } else {
             holder.btnPostOption.setVisibility(View.GONE);
         }
+
+        // Menu option
         holder.btnPostOption.setOnClickListener(v->{
             PopupMenu popupMenu = new PopupMenu(context,holder.btnPostOption );
             //tao menu popup
@@ -175,17 +178,33 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
                         }
                         case R.id.item_report:{
                             reportPost();
-
                         }
-
 
                     }
                     return false;
                 }
             });
-
             popupMenu.show();
 
+        });
+
+        // Comment txt
+        holder.txtComments.setOnClickListener(v->{
+            Intent i = new Intent(((HomeActivity) context), CommentActivity.class );
+            // post id
+            i.putExtra("postId", post.getId());
+            // vi tri bai viet
+            i.putExtra("postPosition", position);
+            context.startActivity(i);
+        });
+
+        // Comment btn
+        holder.btnComment.setOnClickListener(v->{
+            Intent i = new Intent(((HomeActivity) context),CommentActivity.class );
+            // post id
+            i.putExtra("postId", post.getId());
+            i.putExtra("postPosition", position);
+            context.startActivity(i);
         });
 
     }
@@ -317,7 +336,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
         private ImageView imgPost;
         private ImageButton btnPostOption,btnLike,btnComment;
 
-
         public PostsHolder(@NonNull View itemView) {
             super(itemView);
             txtName     = itemView.findViewById(R.id.txtPostName);
@@ -338,22 +356,4 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

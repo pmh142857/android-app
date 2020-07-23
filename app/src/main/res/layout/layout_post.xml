@@ -87,13 +87,14 @@
                 android:layout_marginRight="12dp"
                 android:src="@drawable/ic_favorite_outline"
                 android:background="@android:color/transparent"/>
+
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/btnPostComment"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_comment"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_comment" />
 
         </LinearLayout>
         <TextView

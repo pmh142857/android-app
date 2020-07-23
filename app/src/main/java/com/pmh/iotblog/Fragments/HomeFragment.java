@@ -88,7 +88,9 @@ public class HomeFragment extends Fragment {
         
     }
 
-    // Duyet mang va lay cac gia tri trong Api
+
+    // Request co response tra ve la JSONObject
+    // Request success ta co the lay JSONObject trong onResponse
 
     private void getPosts() {
         arrayList = new ArrayList<>();

@@ -12,8 +12,9 @@
         android:text="IoT Blog"
         android:textSize="32sp"
         android:fontFamily="@font/leckerlione_regular"
-        android:textColor="@color/colorGrey"
+        android:textColor="#00897B"
         android:gravity="center_horizontal"
+        android:textStyle="bold"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:layout_height="wrap_content"/>

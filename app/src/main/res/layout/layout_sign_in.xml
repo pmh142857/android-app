@@ -10,9 +10,10 @@
     <TextView
         android:layout_width="match_parent"
         android:text="IoT Blog"
+        android:textStyle="bold"
         android:textSize="32sp"
         android:fontFamily="@font/leckerlione_regular"
-        android:textColor="@color/colorGrey"
+        android:textColor="#00897B"
         android:gravity="center_horizontal"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="80dp"

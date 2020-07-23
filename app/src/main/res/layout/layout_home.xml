@@ -11,14 +11,16 @@
         android:id="@+id/toolbarHome"
         android:elevation="1dp"
         android:theme="@style/AppTheme.BottomAppbar"
-        app:title="">
+        app:title="" >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:text="Iot Blog"
+            android:textStyle="bold"
             android:fontFamily="@font/leckerlione_regular"
             android:textSize="20sp"
-            android:textColor="@color/colorBlack"/>
+            android:textColor="#00897B"/>
 
     </com.google.android.material.appbar.MaterialToolbar>
 
