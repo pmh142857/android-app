@@ -181,6 +181,10 @@ public class SignUpFragment extends Fragment {
                     SharedPreferences.Editor editor = userPref.edit();
                     editor.putString("token",object.getString("token"));
                     editor.putString("name",user.getString("name"));
+
+                    // luu id nguoi dung post, hien menu option
+                    editor.putInt("id",user.getInt("id"));
+
                     editor.putString("lastname",user.getString("lastname"));
                     editor.putString("photo",user.getString("photo"));
                     editor.putBoolean("isLoggedIn",true);

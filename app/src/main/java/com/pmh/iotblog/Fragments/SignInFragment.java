@@ -142,7 +142,8 @@ public class SignInFragment extends Fragment {
         dialog.setMessage("Logging in");
         dialog.show();
         StringRequest request = new StringRequest(Request.Method.POST, Constant.LOGIN,response ->{
-            // get response if connection success
+            // get response if connection success,
+            // sua doi cac anh xa gia tri
             try {
                 JSONObject object = new JSONObject(response);
                 if (object.getBoolean("success")){
@@ -153,6 +154,10 @@ public class SignInFragment extends Fragment {
                     SharedPreferences.Editor editor = userPref.edit();
                     editor.putString("token",object.getString("token"));
                     editor.putString("name",user.getString("name"));
+
+                    // luu id nguoi dung post, hien menu option
+                    editor.putInt("id",user.getInt("id"));
+
                     editor.putString("lastname",user.getString("lastname"));
                     editor.putString("photo",user.getString("photo"));
                     editor.putBoolean("isLoggedIn",true);
