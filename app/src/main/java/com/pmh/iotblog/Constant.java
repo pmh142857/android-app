@@ -10,6 +10,6 @@ public class Constant {
     public static final String ADD_POST     = POSTS +"/create";
     public static final String UPDATE_POST  = POSTS +"/update";
     public static final String DELETE_POST  = POSTS +"/delete";
-
+    public static final String LIKE_POST    = POSTS +"/like";
 
 }

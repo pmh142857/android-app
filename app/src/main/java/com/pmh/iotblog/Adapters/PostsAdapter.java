@@ -15,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -75,6 +74,70 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
         holder.txtLikes.setText(post.getLikes()+" Likes");
         holder.txtDate.setText(post.getDate());
         holder.txtDesc.setText("@ " +post.getDesc());
+
+        // Set Like icon post
+        holder.btnLike.setImageResource(
+            post.isSelfLike() ? R.drawable.ic_favorite_red : R.drawable.ic_favorite_outline
+        );
+
+        // Set su kien Like post
+        holder.btnLike.setOnClickListener(v->{
+            // thay doi icon like
+            holder.btnLike.setImageResource(
+                    post.isSelfLike() ? R.drawable.ic_favorite_outline : R.drawable.ic_favorite_red
+            );
+            //
+            StringRequest request = new StringRequest(Request.Method.POST,Constant.LIKE_POST,response -> {
+
+                Post mPost = list.get(position);
+                try {
+                    JSONObject object = new JSONObject(response);
+                    // neu request success thi count +-1
+                    if(object.getBoolean("success")){
+
+                        mPost.setSelfLike(!post.isSelfLike());
+                        mPost.setLikes(mPost.isSelfLike() ? post.getLikes()+1 : post.getLikes()-1 );
+                        list.set(position,mPost);
+                        notifyItemChanged(position);
+                        notifyDataSetChanged();
+
+                    }
+                    else {
+                        holder.btnLike.setImageResource(
+                                post.isSelfLike() ? R.drawable.ic_favorite_red : R.drawable.ic_favorite_outline
+                        );
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            },error -> {
+                error.printStackTrace();
+
+            }){
+                // add token header
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    String token = preferences.getString("token","");
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("Authorization","Bearer "+token);
+                    return map;
+                }
+
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("id",post.getId()+"");
+                    return  map;
+                }
+            };
+
+            RequestQueue queue = Volley.newRequestQueue(context);
+            queue.add(request);
+
+        });
+
 
         //Kiem tra nguoi dung va chi hien thi tren bai post cua nguoi dung menu popup
         if(post.getUser().getId() == preferences.getInt("id",0)){
