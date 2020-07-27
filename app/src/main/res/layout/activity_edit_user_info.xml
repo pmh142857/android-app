@@ -1,10 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="50dp"
     tools:context=".EditUserInfoActivity">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        android:textColor="#00897B"
+        android:text="Edit Info"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_horizontal"
+        android:textStyle=""
+        android:fontFamily="@font/leckerlione_regular"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgEditUserInfo"
+        android:layout_width="120dp"
+        android:layout_height="135dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:src="#9AEDF4" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select photo"
+        android:textStyle="italic"
+        android:fontFamily="@font/leckerlione_regular"
+        android:textColor="#00897B"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:id="@+id/txtEditSelectPhoto"
+        android:layout_marginBottom="20dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtEditLayoutNameUserInfo"
+        android:layout_marginBottom="6dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:id="@+id/txtEditNameUserInfo"
+            android:hint="Name"
+            android:inputType="text"
+            android:textSize="15sp"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtEditLayoutLastnameUserInfo"
+        android:layout_marginBottom="30dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:id="@+id/txtEditLastnameUserInfo"
+            android:hint="LastName"
+
+            android:inputType="text"
+            android:textSize="15sp"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:id="@+id/btnEditSave"
+        android:text="Save"
+        android:textSize="17dp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/leckerlione_regular"
+        android:background="@drawable/btn_round"
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="70dp"/>
+
+</LinearLayout>

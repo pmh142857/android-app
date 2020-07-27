@@ -56,6 +56,10 @@ public class UserInfoActivity extends AppCompatActivity {
     }
 
     private void init() {
+        dialog          = new ProgressDialog(this);
+        dialog.setCancelable(false);
+        userPref        = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+
         layoutLastName  = findViewById(R.id.textLayoutLastnameUserInfo);
         layoutName      = findViewById(R.id.textLayoutNameUserInfo);
         txtName         = findViewById(R.id.txtNameUserInfo);
@@ -64,10 +68,9 @@ public class UserInfoActivity extends AppCompatActivity {
         btnContinue     = findViewById(R.id.btnContinue);
         circleImageView = findViewById(R.id.imgUserInfo);
 
-        dialog          = new ProgressDialog(this);
-        dialog.setCancelable(false);
 
-        userPref        = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+
+
 
         // Chon anh tu thu vien, bo suu tap
         txtSelectPhoto.setOnClickListener(v->{

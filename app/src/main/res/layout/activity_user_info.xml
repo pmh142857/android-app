@@ -6,18 +6,18 @@
     android:layout_height="match_parent"
     android:padding="50dp"
     android:orientation="vertical"
-
     tools:context=".UserInfoActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="35sp"
+        android:textColor="#00897B"
+        android:text="Profile"
         android:layout_marginBottom="30dp"
         android:gravity="center_horizontal"
-        android:textStyle="bold"
-        android:fontFamily="@font/leckerlione_regular"
-        android:text="User Info"/>
+        android:textStyle=""
+        android:fontFamily="@font/leckerlione_regular"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgUserInfo"
@@ -25,16 +25,17 @@
         android:layout_height="135dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:src="@color/colorLightGrey" />
+        android:src="#9AEDF4" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select photo"
+        android:textStyle="italic"
         android:fontFamily="@font/leckerlione_regular"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#00897B"
         android:gravity="center_horizontal"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:id="@+id/txtSelectPhoto"
         android:layout_marginBottom="20dp"/>
 

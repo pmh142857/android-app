@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:text="Edit post"
             android:textStyle="bold"
-            android:textColor="#00BFA5"
+            android:textColor="#00897B"
             android:fontFamily="@font/leckerlione_regular"
             android:textSize="18sp"
             android:layout_height="wrap_content"/>
