@@ -1,10 +1,338 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SmartHomeActivity">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarSmart"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorWhite"
+        android:elevation="1dp"
+        app:title="">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/leckerlione_regular"
+            android:text="Smart Home"
+
+            android:textColor="#00897B"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <TextView
+        android:id="@+id/temp_in_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Nhiệt độ trong phòng :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title_temp_in_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:text="Nhiệt độ :"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/temp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/title_temp_in_room"
+            android:text="29"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/temp1"
+            android:text="&#8451;"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+        <!--//do am-->
+        <TextView
+            android:id="@+id/title_hum_in_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_temp_in_room"
+            android:layout_marginStart="120dp"
+            android:text="Độ ẩm :"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/hum1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/temp1"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/title_temp_in_room"
+            android:text="85"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/temp1"
+            android:layout_toEndOf="@id/hum1"
+            android:text="%"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/weather_forecasts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Nhiệt độ dự báo:"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--title temp-->
+        <TextView
+            android:id="@+id/title_weather_forecasts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:text="Nhiệt độ :"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+        <!--chiso-->
+        <TextView
+            android:id="@+id/temp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_toEndOf="@id/title_weather_forecasts"
+            android:text="29"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+        <!--don vi-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/temp2"
+            android:text="&#8451;"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
+        <!--title feels like-->
+        <TextView
+            android:id="@+id/feels_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_weather_forecasts"
+            android:layout_alignStart="@id/title_weather_forecasts"
+            android:text="Cảm thấy như :"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+        <!--chiso-->
+        <TextView
+            android:id="@+id/index_feels_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/temp2"
+            android:layout_marginStart="50dp"
+            android:layout_toEndOf="@id/title_weather_forecasts"
+            android:text="30"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+        <!--donvi-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/index_feels_like"
+            android:layout_toEndOf="@id/index_feels_like"
+            android:text="&#8451;"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
+        <!--title suc gio-->
+        <TextView
+            android:id="@+id/title_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/feels_like"
+            android:layout_alignStart="@id/title_weather_forecasts"
+            android:text="Sức gió :"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+        <!-- chiso-->
+        <TextView
+            android:id="@+id/index_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/index_feels_like"
+            android:layout_marginStart="50dp"
+            android:layout_toEndOf="@id/title_weather_forecasts"
+            android:text="1.5"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+        <!-- donvi -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/index_wind"
+            android:layout_toEndOf="@id/index_wind"
+            android:text="m/s"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
+        <!--        title may-->
+        <TextView
+            android:id="@+id/title_clouds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_wind"
+            android:layout_alignStart="@id/title_weather_forecasts"
+            android:text="Mây :"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+        <!--  chiso  -->
+        <TextView
+            android:id="@+id/index_clouds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/index_wind"
+            android:layout_marginStart="50dp"
+            android:layout_toEndOf="@id/title_weather_forecasts"
+            android:text="40"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+        <!-- don vi -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/index_clouds"
+            android:layout_toEndOf="@id/index_clouds"
+            android:text="%"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
+        <!--  do am  -->
+        <TextView
+            android:id="@+id/title_hum_weather_forecasts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_clouds"
+            android:layout_alignStart="@id/title_weather_forecasts"
+            android:text="Độ ẩm :"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/hum2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/index_clouds"
+            android:layout_marginStart="50dp"
+            android:layout_toEndOf="@id/title_weather_forecasts"
+            android:text="85"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/index_clouds"
+            android:layout_toEndOf="@id/index_clouds"
+            android:text="% "
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_On_Off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Bật tắt các thiệt bị"
+            android:textColor="#000"
+            android:textSize="32dp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_hc_sr501"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:text="Tự động bật tắt thiết bị  "
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_led"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:text="LED 1"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_led_2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:text="LED 2"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_led_3"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:text="LED 3"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_fan"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:text="FAN"
+            android:textColor="@color/colorGrey"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

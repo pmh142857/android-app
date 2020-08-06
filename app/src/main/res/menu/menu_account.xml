@@ -2,11 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+
+    <item android:title=""
+    android:id="@+id/smart_home"
+    app:showAsAction="always"
+    android:icon="@drawable/ic_smart_home" >
+    </item>
+    <item android:title=""
+        android:id="@+id/item_null"
+       app:showAsAction="always">
+    </item>
+
     <item android:title=""
         android:id="@+id/item_logout"
         app:showAsAction="always"
         android:icon="@drawable/ic_logout" >
 
     </item>
-
 </menu>

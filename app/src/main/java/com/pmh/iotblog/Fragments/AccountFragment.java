@@ -32,8 +32,11 @@ import com.pmh.iotblog.AuthActivity;
 import com.pmh.iotblog.Constant;
 import com.pmh.iotblog.EditUserInfoActivity;
 import com.pmh.iotblog.HomeActivity;
+import com.pmh.iotblog.MainActivity;
 import com.pmh.iotblog.Models.Post;
+import com.pmh.iotblog.OnBoardActivity;
 import com.pmh.iotblog.R;
+import com.pmh.iotblog.SmartHomeActivity;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -177,11 +180,29 @@ public class AccountFragment extends Fragment {
                    }
                });
                builder.show();
+               break;
            }
+
+           case R.id.smart_home:{
+               smarthome();
+               break;
+           }
+
+
        }
 
         return super.onOptionsItemSelected(item);
     }
+
+    // remote smarthome
+    public  void smarthome(){
+        startActivity(new Intent( (HomeActivity) getContext() , SmartHomeActivity.class));
+
+
+
+    }
+
+    // logout
     public  void  logout(){
         StringRequest request = new StringRequest(Request.Method.GET,Constant.LOGOUT,response -> {
 
